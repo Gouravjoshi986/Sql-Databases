@@ -1,0 +1,19 @@
+Types of Databases 
+1. NoSQL Databases = Stored in a schemaless fashion.fast and lean  
+eg. MongoDb
+2. Graph Databases = stored in graph fashion.  It is used when relationships are important. (need to be stored / Social Media)
+eg. Neo4j
+3. Vector Databases = Store data in form of vectors . Used widely in ML AI. 
+eg. Pinecone
+4. SQL Databases = Stores data in form of rows. Most full stack application use this. 
+eg. MySQL,Postgres
+
+NO SQL DATABASE PROBLEMS = 
+Can lead to inconsistent database
+Can cause runtime errors 
+Is too flexible for an app that needs strictness
+ 
+Upsides =
+Can move very fast
+Can change schema very easily
+ 
