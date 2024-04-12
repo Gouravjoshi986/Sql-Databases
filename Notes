@@ -106,3 +106,24 @@ const values = [username,email]
 cliend.query(queryString,values); 
 
 // this will treat user inputs as values and not sql commands
+
+#Relationship in SQL   
+: Relationships let you store data in different tables and relate it with each other.
+ If we have a users table and an address table. and we are using the id of user table as user id of address table (user id is foreign key which refrences id). then we have defined a relationship between both tables 
+
+ # Joins  = 
+fetch me a users details and  their address: 
+
+SELECT u.id, u.username, u.email, a.city, a.country, a.street, a.pincode
+FROM users u
+JOIN addresses a ON u.id = a.user_id
+WHERE u.id = YOUR_USER_ID;
+
+For fetching things from two tables and show them in a single tabular format we use joins. 
+instead of using two querries. 
+
+// Benefits of using a join - 
+Reduced Latency
+Simplified Application Logic
+Transactional Integrity
+ 
