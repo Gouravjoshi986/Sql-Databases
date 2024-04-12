@@ -16,4 +16,64 @@ Is too flexible for an app that needs strictness
 Upsides =
 Can move very fast
 Can change schema very easily
+
+Why SQL = 
+SQL databases have a strict schema. They require you to define your schema
+Put in data that follows that schema
+Update the schema as your app changes and perform migrations
+
+Steps = Run Db , use library to connect , create table and define schema run querries
+
+You can start a Potgres database in a few ways - 
+ 
+1.Using neondb
+https://neon.tech/ is a decent service that let’s you create a server. 
+Here you will get a postgress connection string
+
+2.Using docker 
+docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
+
+// For connecting with the db we can use psql(in built with postgres native) or pg (node library) 
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE users: This command initiates the creation of a new table in the database named users.
+
+SERIAL: A PostgreSQL-specific data type for creating an auto-incrementing integer.
+PRIMARY KEY: id column is the primary key for the table, meaning it uniquely identifies each row. Values in this column must be unique and not null.
+
+VARCHAR(50): A variable character string data type that can store up to 50 characters. It's used here to limit the length of the username. 
+
+UNIQUE: This constraint ensures that all values in the username column are unique across the table. No two users can have the same username.
+
+NOT NULL: This constraint prevents null values from being inserted into the username column. Every row must have a username value.
+
+TIMESTAMP WITH TIME ZONE: This data type stores both a timestamp and a time zone, allowing for the precise tracking of when an event occurred, regardless of the user's or server's time zone.
+
+DEFAULT CURRENT_TIMESTAMP: This default value automatically sets the created_at column to the date and time at which the row is inserted into the table, using the current timestamp of the database server.
+
+There are 4 things you’d like to do with a database 
+ 
+1. INSERT
+INSERT INTO users (username, email, password)
+VALUES ('username_here', 'user@example.com', 'user_password');
+💡
+2. UPDATE
+UPDATE users
+SET password = 'new_password'
+WHERE email = 'user@example.com';
+
+3. DELETE
+DELETE FROM users
+WHERE id = 1;
+
+4. Select
+SELECT * FROM users
+WHERE id = 1;
  
