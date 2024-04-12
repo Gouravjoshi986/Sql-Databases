@@ -76,4 +76,33 @@ WHERE id = 1;
 4. Select
 SELECT * FROM users
 WHERE id = 1;
+
+# You can use postgres via node js library (pg)
+import { Client } from "pg"; this is used to import client where you will do your connection and query tasks. 
+
+const client = new Client({
+    connectionString:process.env.POSTGRES_STRING
+})   using connection string like this
  
+and connect with an await 
+=>   await client.connect()
+
+and query using tilde
+=>   const result = await client.query(`
+        CREATE TABLE users (
+        id SERIAL PRIMARY KEY,
+        username VARCHAR(50) UNIQUE NOT NULL
+    );
+    `)   
+
+client.end()  when the session is over 
+
+//# Security Tip   = You never put the user provided inputs in an database directly. 
+As user can send a harmful data which our query will treat as sql commands (SQL injections) that can lead to problems.
+
+We use $1 $2 $3 for user input fields and provide them to the query:
+const queryString = `INSERT INTO users (username,email) VALUES ($1,$2)`;
+const values = [username,email]
+cliend.query(queryString,values); 
+
+// this will treat user inputs as values and not sql commands
