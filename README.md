@@ -1,2 +1,2 @@
 # SQL Databases 
-A guide about sql databases (Postgres) 
+A guide about sql databases (Postgres)
