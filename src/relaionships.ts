@@ -19,7 +19,7 @@ async function createUsersTable(){
     const result = await client.query(queryString);
     console.log(result);
 }
-
+createUsersTable();
 async function createAddressTable(){
     await client.connect();
     const queryString = `CREATE TABLE address (
@@ -34,7 +34,7 @@ async function createAddressTable(){
     const result = await client.query(queryString);
     console.log(result);
 }
-
+createAddressTable();
 // On delete cascade just means that on deleting primary key the address table's user_id row will also vanish 
 
 
